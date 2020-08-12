@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../node_modules/bootstrap/compiler/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/compiler/style.css">
+    <title>InviteGuest app - Aplicativo de convidados</title>
+</head>
+<body>
+    <div id="container1" class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <h3>GESTOR DE CONVIDADOS</h3>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="input-group col-sm-6 col-md-4">
+
+                <div class="input-group-pretend">
+                    <span class="input-group-text" id="hostName">Anfitrião:</span>
+                </div>
+
+                <input type="text"
+                class="form-control"
+                id="hostNameInput"
+                aria-describedby="hostName" />
+
+            </div>
+                <div class="col-sm-6 col-md-4">
+                    <button class="btn btn-success mx-1"
+                            id="btnAddHostName">Adicionar</button>
+                    <button class="btn btn-danger mx-1"
+                            id="btnDelHostName">Remover</button>
+                </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="input-group col-sm-6 col-md-4">
+
+                <div class="input-group-pretend">
+                    <span class="input-group-text"
+                          id="receptionistName">Recepcionista:</span>
+                </div>
+
+                <input type="text"
+                       class="form-control"
+                       id="receptionistNameInput"
+                       aria-describedby="receptionistName" />
+            </div>
+                <div class="col-sm-6 col-md-4">
+                    <button class="btn btn-success mx-1"
+                            id="btnAddReceptionistName">Adicionar</button>
+                    <button class="btn btn-danger mx-1"
+                            id="btnDelReceptionistName">Remover</button>
+                </div>
+        </div>
+
+        <hr>
+    </div>
+
+    <div id="container2" class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <h4>Lista de Convidados</h4>
+            </div>
+        </div>
+
+        <!-- add guest -->
+        <div class="row mt-3">
+            <div class="input-group col-sm-8 col-md-4">
+                
+                <div class="input-group-pretend">
+                    <span class="input-group-text" id="guestName">Nome do Convidado:</span>
+                </div>
+
+                <input type="text"
+                       class="form-control"
+                       id="guestNameInput"
+                       aria-describedby="guestName"/>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <button class="btn btn-success mx-1" id="btnAddGuest">
+                    Adicionar Convidado
+                </button>
+            </div>
+            
+
+        </div>
+        <!-- add guest -->
+
+        <!-- ordered table by name with the guests -->
+        <div class="jumbotron mt-3">
+            <table class="table col-xs col-sm-12 col-md-6">
+                <thead>
+                    <tr>
+                        <th>Nome:</th>
+                        <th>Ações:</th>
+                    </tr>
+                </thead>
+
+                <tbody id="guestNameList"></tbody>
+            </table>
+            <!-- ordered table by name with the guests -->
+        </div>
+    </div>
+
+<script src="../src/bundle.js"></script>
+<script src="../node_modules/popper.js/dist/popper.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js "></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "inviteguest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "bootstrap": "4.5.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "sass": "^1.26.10"
+  },
+  "scripts": {
+    "dev": "babel ./src/index.js -o ./src/bundle.js -w"
+  }
+}
