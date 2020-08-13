@@ -121,57 +121,72 @@ class Guest{
         this.guests = [];
     }
 
-    createList(guestName){
+    create(guestName){
         
         if (guestName == "") {
             alert("Digite um nome.");
             
         }else{
-
+        
+        // add guest to the list
         let guestNameInput = document.getElementById("guestNameInput");
         let elGuestNameInput =  guestNameInput.value;
         this.guests.push({name: elGuestNameInput});
+        localStorage.setItem("guestName", JSON.stringify(this.guests));
         guestNameInput.value = "";
+        window.location.reload();
         
+        }    
+    }
+
+    list(){
+        this.guests = JSON.parse(localStorage.getItem("guestName")) || [];
 
         let elNameList = document.getElementById("guestNameList");
         elNameList.innerHTML = "";
-        
-            for (const guest of this.guests) {
 
-                let elTr = document.createElement("tr")
-                let elTd1 = document.createElement("td");
-                let elTd2 = document.createElement("td");
-                let elTdAEdit = document.createElement("a");
-                elTdAEdit.setAttribute("href", "#");
-                elTdAEdit.classList.add("btn"); //Adding the class
-                elTdAEdit.classList.add("btn-primary"); //Adding the class
-                let elTdADel = document.createElement("a");
-                elTdADel.setAttribute("href", "#");
-                elTdADel.classList.add("btn"); //Adding the class
-                elTdADel.classList.add("btn-danger"); //Adding the class
-                let elTdEdit = document.createTextNode("Editar");
-                let elTdDel = document.createTextNode("Excluir");
-                let elGuestName = document.createTextNode(guest.name);
+        for (const guest of this.guests) {
 
-                // name of the guest
-                elTd1.appendChild(elGuestName);
-                elTr.appendChild(elTd1)
-                elNameList.appendChild(elTr);
+            let elTr = document.createElement("tr")
+            let elTd1 = document.createElement("td");
+            let elTd2 = document.createElement("td");
+            let elTdAEdit = document.createElement("a");
+            elTdAEdit.setAttribute("href", "#");
+            elTdAEdit.classList.add("btn"); //Adding the class
+            elTdAEdit.classList.add("btn-primary"); //Adding the class
+            let elTdADel = document.createElement("a");
+            elTdADel.setAttribute("href", "#");
+            elTdADel.classList.add("btn"); //Adding the class
+            elTdADel.classList.add("btn-danger"); //Adding the class
+            elTdADel.classList.add("mx-1"); //Adding the class
+            let elTdEdit = document.createTextNode("Editar");
+            let elTdDel = document.createTextNode("Excluir");
+            let elGuestName = document.createTextNode(guest.name);
 
-                // edit button
-                elTdAEdit.appendChild(elTdEdit);
-                elTd2.appendChild(elTdAEdit);
-                elTr.appendChild(elTd2);
-                elNameList.appendChild(elTr);
+            // name of the guest
+            elTd1.appendChild(elGuestName);
+            elTr.appendChild(elTd1)
+            elNameList.appendChild(elTr);
 
-                // delete button
-                elTdADel.appendChild(elTdDel);
-                elTd2.appendChild(elTdADel);
-                elTr.appendChild(elTd2);
-                elNameList.appendChild(elTr);
+            // edit button
+            elTdAEdit.appendChild(elTdEdit);
+            elTd2.appendChild(elTdAEdit);
+            elTr.appendChild(elTd2);
+            elNameList.appendChild(elTr);
+
+            // delete button
+            elTdADel.appendChild(elTdDel);
+            elTd2.appendChild(elTdADel);
+            elTr.appendChild(elTd2);
+            elNameList.appendChild(elTr);
+
+            // event to delete a guest
+            elTdADel.onclick = () =>{
+                
             }
-        }    
+        }
+        
+
     }
 }
 
@@ -180,10 +195,6 @@ const objGuest = new Guest();
 
 document.getElementById("btnAddGuest").onclick = () =>{
     let guestName = document.getElementById("guestNameInput").value;
-    objGuest.createList(guestName);
+    objGuest.create(guestName);
 }
-
-
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
+objGuest.list();
