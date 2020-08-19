@@ -33,4 +33,6 @@ The user(receptionist in the most cases) type the host name and receptionist nam
 - run the command `yarn dev`
 - Execute the index.html file 
 
+### DONE!
+
 ------------
