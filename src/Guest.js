@@ -1,4 +1,4 @@
-class Guest{
+export class Guest {
 
     constructor(){
         this.guests = [];
@@ -66,17 +66,3 @@ class Guest{
         console.log(guestRemoved);
     }
 }
-
-const objGuest = new Guest();
-
-document.getElementById("btnAddGuest").onclick = () =>{
-    let guestName = document.getElementById("guestNameInput").value;
-    objGuest.create(guestName);
-}
-//delete method
-const deleteGuest = (id) =>{
-    objGuest.delete(id);
-};
-window.deleteGuest = deleteGuest; //making the variable global
-
-objGuest.list();

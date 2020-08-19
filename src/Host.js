@@ -1,4 +1,4 @@
-class Host {
+export class Host {
 
     constructor(){
         this.hostName;
@@ -37,18 +37,3 @@ class Host {
 
     }
 }
-
-const objHost = new Host();
-
-document.getElementById("btnAddHostName").onclick = () => {
-    let nameHost = document.getElementById("hostNameInput").value;
-    objHost.create(nameHost);  
-};
-
-objHost.list();
-
-
-document.getElementById("btnDelHostName").onclick = () => {
-    document.getElementById("hostNameInput").value = "";
-    objHost.delete();
-};

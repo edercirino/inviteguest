@@ -1,4 +1,4 @@
-class Receptionist {
+export class Receptionist {
 
     constructor(){
         this.receptionistName;
@@ -41,17 +41,3 @@ class Receptionist {
         window.location.reload();
     }
 }
-
-const objReceptionist = new Receptionist();
-
-document.getElementById("btnAddReceptionistName").onclick = () => {
-    let nameRecept = document.getElementById("receptionistNameInput").value;
-    objReceptionist.create(nameRecept);
-};
-
-objReceptionist.list();
-
-document.getElementById("btnDelReceptionistName").onclick = () => {
-    document.getElementById("receptionistNameInput").value = "";
-    objReceptionist.delete();
-};
