@@ -42,8 +42,7 @@ const objHost = new Host();
 
 document.getElementById("btnAddHostName").onclick = () => {
     let nameHost = document.getElementById("hostNameInput").value;
-    objHost.create(nameHost);
-    
+    objHost.create(nameHost);  
 };
 
 objHost.list();
@@ -140,38 +139,33 @@ class Guest{
     }
 
     list(){
+        // load the list
         this.guests = JSON.parse(localStorage.getItem("guestName")) || [];
-
+        
         let elNameList = document.getElementById("guestNameList");
         elNameList.innerHTML = "";
 
         for (const guest of this.guests) {
-
+            
             let elTr = document.createElement("tr")
-            let elTd1 = document.createElement("td");
-            let elTd2 = document.createElement("td");
+            let elTd1 = document.createElement("td"); //guest name
+            let elTd2 = document.createElement("td"); //button del
             let elTdAEdit = document.createElement("a");
             elTdAEdit.setAttribute("href", "#");
-            elTdAEdit.classList.add("btn"); //Adding the class
-            elTdAEdit.classList.add("btn-primary"); //Adding the class
+            elTdAEdit.classList.add("btn", "btn-primary"); //Adding the class
             let elTdADel = document.createElement("a");
-            elTdADel.setAttribute("href", "#");
-            elTdADel.classList.add("btn"); //Adding the class
-            elTdADel.classList.add("btn-danger"); //Adding the class
-            elTdADel.classList.add("mx-1"); //Adding the class
+            elTdADel.setAttribute("href", "#"); //Adding the class
+            elTdADel.setAttribute("onclick", "objGuest.delete("+guest.name+")"); //deleting
+            elTdADel.classList.add("btn", "btn-danger", "mx-1"); //Adding the class
             let elTdEdit = document.createTextNode("Editar");
             let elTdDel = document.createTextNode("Excluir");
             let elGuestName = document.createTextNode(guest.name);
+            elTd1.setAttribute("id", guest.name);
+
 
             // name of the guest
             elTd1.appendChild(elGuestName);
-            elTr.appendChild(elTd1)
-            elNameList.appendChild(elTr);
-
-            // edit button
-            elTdAEdit.appendChild(elTdEdit);
-            elTd2.appendChild(elTdAEdit);
-            elTr.appendChild(elTd2);
+            elTr.appendChild(elTd1);
             elNameList.appendChild(elTr);
 
             // delete button
@@ -180,11 +174,16 @@ class Guest{
             elTr.appendChild(elTd2);
             elNameList.appendChild(elTr);
 
-            // event to delete a guest
-            elTdADel.onclick = () =>{
-                
-            }
         }
+    }
+
+    delete(id){
+        let guest = JSON.parse(localStorage.getItem("guestName"));
+        let guestId = id.textContent; //get the content(name)
+        let guestRemoved = guest.filter((id) => { return id.name !== guestId });
+        localStorage.setItem("guestName", JSON.stringify(guestRemoved));
+        window.location.reload();
+        console.log(guestRemoved);
         
 
     }
@@ -195,6 +194,7 @@ const objGuest = new Guest();
 
 document.getElementById("btnAddGuest").onclick = () =>{
     let guestName = document.getElementById("guestNameInput").value;
+        
     objGuest.create(guestName);
 }
 objGuest.list();

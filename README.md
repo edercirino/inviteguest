@@ -13,14 +13,7 @@ This project was developed without javascript framework. The biggest challenge f
 
 #### How it works
 
-The user(receptionist in the most cases) type the host name and eeceptionist name(him/her own name). After this, the section will showed to add the guests.
-
-
-#### Future implementations
-
-- Order the list
-- Implement input age
-- Search bar to filter the list
+The user(receptionist in the most cases) type the host name and receptionist name(him/her own name). After this, the section will showed to add the guests.
 
 ------------
 ### How to test this project in your computer
