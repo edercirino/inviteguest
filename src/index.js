@@ -87,6 +87,8 @@ class Receptionist {
                                     .style.display = "block";
             document.getElementById("btnAddReceptionistName")
                                     .style.display = "none";
+            document.getElementById("container2").style.display = "block";
+
         }
     }
 
@@ -94,6 +96,7 @@ class Receptionist {
         localStorage.removeItem("receptionistName");
         document.getElementById("btnAddReceptionistName").style.display = "block";
         document.getElementById("btnDelReceptionistName").style.display = "none";
+        window.location.reload();
     }
 }
 
@@ -111,9 +114,7 @@ document.getElementById("btnDelReceptionistName").onclick = () => {
     objReceptionist.delete();
 };
 
-
 // -----------------------------------------------------------------------------
-
 class Guest{
 
     constructor(){
@@ -142,6 +143,7 @@ class Guest{
         // load the list
         this.guests = JSON.parse(localStorage.getItem("guestName")) || [];
         
+        
         let elNameList = document.getElementById("guestNameList");
         elNameList.innerHTML = "";
 
@@ -150,17 +152,13 @@ class Guest{
             let elTr = document.createElement("tr")
             let elTd1 = document.createElement("td"); //guest name
             let elTd2 = document.createElement("td"); //button del
-            let elTdAEdit = document.createElement("a");
-            elTdAEdit.setAttribute("href", "#");
-            elTdAEdit.classList.add("btn", "btn-primary"); //Adding the class
             let elTdADel = document.createElement("a");
             elTdADel.setAttribute("href", "#"); //Adding the class
-            elTdADel.setAttribute("onclick", "objGuest.delete("+guest.name+")"); //deleting
+            elTdADel.setAttribute("onclick", "deleteGuest(this.id)");
             elTdADel.classList.add("btn", "btn-danger", "mx-1"); //Adding the class
-            let elTdEdit = document.createTextNode("Editar");
             let elTdDel = document.createTextNode("Excluir");
             let elGuestName = document.createTextNode(guest.name);
-            elTd1.setAttribute("id", guest.name);
+            elTdADel.setAttribute("id", guest.name);
 
 
             // name of the guest
@@ -177,24 +175,25 @@ class Guest{
         }
     }
 
-    delete(id){
+    delete(idGuest){
         let guest = JSON.parse(localStorage.getItem("guestName"));
-        let guestId = id.textContent; //get the content(name)
-        let guestRemoved = guest.filter((id) => { return id.name !== guestId });
+        let guestRemoved = guest.filter((id) => { return id.name !== idGuest });
         localStorage.setItem("guestName", JSON.stringify(guestRemoved));
         window.location.reload();
         console.log(guestRemoved);
-        
-
     }
 }
 
 const objGuest = new Guest();
 
-
 document.getElementById("btnAddGuest").onclick = () =>{
     let guestName = document.getElementById("guestNameInput").value;
-        
     objGuest.create(guestName);
 }
+//delete method
+const deleteGuest = (id) =>{
+    objGuest.delete(id);
+};
+window.deleteGuest = deleteGuest; //making the variable global
+
 objGuest.list();
