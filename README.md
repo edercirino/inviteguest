@@ -1,4 +1,4 @@
-## InviteGuest - An Web application to manage events
+## InviteGuest - An web application to manage events, parties, etc.
 
 ### Technologies used:
 
