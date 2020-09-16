@@ -1,0 +1,52 @@
+html{
+  margin: 0;
+  font-size: large;
+}
+
+body{
+  margin: 100px;
+}
+
+#title{
+  text-align: center;
+}
+
+.btnAdd{
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  height: 35px;
+}
+
+.btnRemove{
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  height: 35px;
+}
+
+input{
+  float: left;
+  margin-right: 5px;
+  border-radius: 6px;
+  height: 30px;
+  font-size: large;
+}
+
+.guestList{
+ margin: auto;
+ border: 1px solid white;
+ 
+}
+
+#btnDelHostName{
+  display: none;
+}
+
+#btnDelReceptionistName{
+  display: none;
+}
+
+#container2{
+  display: none;
+}
